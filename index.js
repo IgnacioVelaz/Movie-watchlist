@@ -6,9 +6,10 @@ const savedMovies = JSON.parse(localStorage.getItem('movies'))
 let savedMoviesTitles
 const watchListArr = [];
 
-if(savedMovies){
+if(savedMovies.length > 0){
      savedMoviesTitles = savedMovies.map(movie => movie.Title); 
 }
+
 // Add click event to search btn
 searchBtn.addEventListener('click', handleSearch);
 search.addEventListener('keyup', e=>{
