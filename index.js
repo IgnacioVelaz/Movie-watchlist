@@ -67,7 +67,7 @@ function handleSearch(){
 function renderSearchResult(movieData){
 
     const {Title, Rating, Genre, Plot, Runtime} = movieData
-    const Image = movieData.Image === "N/A" ? "/images/unavailable.jpg" : movieData.Image  
+    const Image = movieData.Image === "N/A" ? "images/unavailable.jpg" : movieData.Image  
     let Icon, Disabled
     if(savedMoviesTitles.includes(Title)){
         Disabled = 'disabled';
