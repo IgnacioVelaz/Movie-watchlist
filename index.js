@@ -2,10 +2,13 @@ const search = document.querySelector('#search');
 const searchBtn = document.querySelector('#search-btn');
 const movieAddBtns = document.querySelectorAll('.movie-add-btn')
 const movies = document.querySelector('.movies-container');
-const savedMoviesTitles = JSON.parse(localStorage.getItem('movies')).map(movie => movie.Title) 
+const savedMovies = JSON.parse(localStorage.getItem('movies'))
+let savedMoviesTitles
 const watchListArr = [];
 
-
+if(savedMovies){
+     savedMoviesTitles = savedMovies.map(movie => movie.Title); 
+}
 // Add click event to search btn
 searchBtn.addEventListener('click', handleSearch);
 search.addEventListener('keyup', e=>{
