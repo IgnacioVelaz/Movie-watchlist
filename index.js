@@ -2,7 +2,7 @@ const search = document.querySelector('#search');
 const searchBtn = document.querySelector('#search-btn');
 const movieAddBtns = document.querySelectorAll('.movie-add-btn')
 const movies = document.querySelector('.movies-container');
-let savedMovies 
+let savedMovies = []
 savedMovies = JSON.parse(localStorage.getItem('movies'))
 let savedMoviesTitles = []
 let watchListArr = [];
