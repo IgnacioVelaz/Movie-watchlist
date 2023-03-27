@@ -94,7 +94,7 @@ h1{
 .hero{
     height: 33vh;
     line-height: 1.125em;
-    background-image: url('/images/watchlist-hero.png');
+    background-image: url('images/watchlist-hero.png');
     background-size: cover;
     background-position: 50%;
     display: flex;
