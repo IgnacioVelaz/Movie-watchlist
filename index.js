@@ -3,7 +3,7 @@ const searchBtn = document.querySelector('#search-btn');
 const movieAddBtns = document.querySelectorAll('.movie-add-btn')
 const movies = document.querySelector('.movies-container');
 const savedMovies = JSON.parse(localStorage.getItem('movies'))
-let savedMoviesTitles
+let savedMoviesTitles = []
 const watchListArr = [];
 
 if(savedMovies.length > 0){
@@ -69,7 +69,6 @@ function renderSearchResult(movieData){
     const {Title, Rating, Genre, Plot, Runtime} = movieData
     const Image = movieData.Image === "N/A" ? "/images/unavailable.jpg" : movieData.Image  
     let Icon, Disabled
-
     if(savedMoviesTitles.includes(Title)){
         Disabled = 'disabled';
         Icon = 'fa-circle-check';
@@ -77,6 +76,7 @@ function renderSearchResult(movieData){
         Disabled = '';
         Icon = 'fa-circle-plus'
     }
+    
     movies.innerHTML +=    
         `<div class="movie">
                 <div class="movie-poster-container">
