@@ -6,7 +6,7 @@ function renderWatchList() {
     // Generate HTML for each movie in the watch list
     
     let moviesHtml = "";
-    if(savedMovies.length > 0) {
+    if(savedMovies) {
         moviesHtml  = savedMovies.map(movie => {
             const {Title, Rating, Genre, Plot, Runtime} = movie
             const Image = movie.Image === "N/A" ? "/images/unavailable.jpg" : movie.Image          

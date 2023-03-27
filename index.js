@@ -6,7 +6,7 @@ const savedMovies = JSON.parse(localStorage.getItem('movies'))
 let savedMoviesTitles = []
 let watchListArr = [];
 
-if(savedMovies.length > 0){
+if(savedMovies){
      savedMoviesTitles = savedMovies.map(movie => movie.Title); 
 }
 
