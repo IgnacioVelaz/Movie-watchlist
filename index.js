@@ -4,7 +4,7 @@ const movieAddBtns = document.querySelectorAll('.movie-add-btn')
 const movies = document.querySelector('.movies-container');
 const savedMovies = JSON.parse(localStorage.getItem('movies'))
 let savedMoviesTitles = []
-const watchListArr = [];
+let watchListArr = [];
 
 if(savedMovies.length > 0){
      savedMoviesTitles = savedMovies.map(movie => movie.Title); 
