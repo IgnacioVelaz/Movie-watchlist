@@ -1,12 +1,12 @@
 const movies = document.querySelector('.movies-container')
-
-const savedMovies = JSON.parse(localStorage.getItem('movies'))
+let savedMovies = []
+savedMovies = JSON.parse(localStorage.getItem('movies'))
 
 function renderWatchList() {
     // Generate HTML for each movie in the watch list
     
     let moviesHtml = "";
-    if(savedMovies) {
+    if(savedMovies.length > 0) {
         moviesHtml  = savedMovies.map(movie => {
             const {Title, Rating, Genre, Plot, Runtime} = movie
             const Image = movie.Image === "N/A" ? "/images/unavailable.jpg" : movie.Image          
