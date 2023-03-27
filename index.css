@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+
+:root {
+    --bg-clr: #121212;
+    --text-clr-primary: #fff;
+    --text-clr-secondary: #A5A5A5;
+    --text-xl: 2.2rem;
+    --text-lg: 1.125rem;
+    --text-md: .875rem;
+    --text-sm: .75rem;
+}
+
+@media(min-width: 1200px) {
+    :root{
+        --text-xl: 3rem;
+    }
+}
+
+
+*{
+    margin-top: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    background-color: var(--bg-clr);
+    color: var(--text-clr-primary);
+}
+
+
+
+a, button{
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .5s;
+}
+
+
+
+button{
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: inherit;
+}
+
+button[disabled]{
+    opacity: .5;
+    cursor: default;
+}
+
+label{
+    display: none;
+}
+
+input{
+    border: none;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+
+/*========= Typography ========*/
+
+h1{
+    font-size: var(--text-xl);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 1em;
+}
+
+
+
+
+.anchor{
+    font-weight: 700;
+}
+
+
+
+/*========== Layout =========*/
+
+/*----Hero section----*/
+
+.hero{
+    height: 33vh;
+    line-height: 1.125em;
+    background-image: url('/images/watchlist-hero.png');
+    background-size: cover;
+    background-position: 50%;
+    display: flex;
+    align-items: center;
+}
+.hero-row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 500px;
+    min-width: 370px;
+    margin: 0 auto;
+}
+
+@media(min-width: 1200px){
+    .hero-row{
+        min-width: 500px;
+    }
+}
+
+.hero-row > h1 {
+    font-size: var(--text-xl);
+    margin-bottom: 0;
+}
+
+
+/*----Search Section----*/
+
+.form{
+    margin-top: -10px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2em;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    width: 100%;
+}
+
+input{
+    background-color:#2E2E2F;
+    color: var(--text-clr-secondary);
+    border-radius: .25em 0 0 .25em;
+    padding: .5em 0 .5em 2.5em;
+    position: relative;
+    font-size: var(--text-lg);
+    font-weight: 500;
+}
+
+input::placeholder {
+    color: var(--text-clr-secondary);
+    font-size: var(--text-lg);
+    font-weight: 500;
+}
+
+input:active, input:focus{
+    outline: none;
+}
+
+
+.search-containter{
+    display: flex;
+    align-items: center;
+    width: 80%;
+}
+
+.search-icon{
+    height: 1em;
+    width: 1em;
+    position: relative;
+    left: 2.25em;
+    top: 2px;
+    z-index: 1;
+    fill: var(--text-clr-secondary);
+}
+.form > button{
+    padding: .5em 2em;
+    background-color: #4B4B4B;
+    border-radius: 0 .25em .25em 0;
+}
+
+
+/* Add pseudo element for search icon */
+
+/*---- Start Exploring/Unavailable/Add something ----*/
+
+.start-exploring,
+.add-movies-watchlist,
+.unavailable-container{
+    min-height: 55vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-weight:700;
+}
+
+.start-exploring{
+    color: #2E2E2F;
+    font-weight:700;
+    font-size: var(--text-lg);
+}
+
+.add-movies-watchlist,
+.unavailable{
+    color:var(--text-clr-secondary);
+    font-size: var(--text-lg);
+}
+
+.add-movies{
+    color: var(--text-clr-primary);
+    display: flex;
+    gap: .5em;
+}
+
+.unavailable{
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.fa-film::before{
+    font-size: 6em;
+}
+
+/*---- Movies Section ----*/
+
+.movies-container{
+    padding: 1rem;
+    max-width: 555px;
+    margin: 0 auto;
+}
+
+@media(min-width:1100px){
+    .movies-container{
+        max-width: 800px;
+    }
+}
+
+.movie{
+    padding: 1.5rem 0;
+    border-bottom: solid 1px var(--text-clr-secondary);
+    display: flex;
+    gap: 1em;
+}
+
+.movie:last-child{
+    border-bottom: none;
+}
+
+.movie-poster{
+    margin-bottom: 1rem;
+    max-width: 150px;
+}
+
+.movie-title-container{
+    display: flex;
+    align-items: baseline;
+    gap: .25em;
+    
+}
+
+.movie-title{
+    font-size: var(--text-lg);
+    font-weight: 500;
+}
+
+.star-icon{
+    height: 1em;
+    width: 1em;
+    fill:#FEC654;
+}
+
+.movie-meta-container{
+    display: flex;
+    margin-bottom: 1em;
+    gap: 1em;
+    font-size: var(--text-sm);
+}
+
+.movie-add-btn {
+    display: flex;
+    align-items: center;
+    gap: .25em;
+    transition: all .5s;
+}
+
+
+
+.add-icon{
+    height: 1.25em;
+    width: 1.25em;
+    position:relative;
+}
+
+.add-icon::before{
+    font-size: 1.25em;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.movie-length{
+    margin-bottom: 0;
+}
+
+.movie-plot{
+    color: var(--text-clr-secondary);
+}
