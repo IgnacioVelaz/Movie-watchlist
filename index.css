@@ -159,6 +159,7 @@ input:active, input:focus{
     display: flex;
     align-items: center;
     width: 80%;
+    position: relative;
 }
 
 .search-container:before {
