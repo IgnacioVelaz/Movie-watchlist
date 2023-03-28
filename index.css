@@ -161,6 +161,17 @@ input:active, input:focus{
     width: 80%;
 }
 
+.search-container:before {
+    content: url(images/magnifying-glass-solid.svg);
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    height: 15px;
+    z-index: 1;
+    width: 15px;
+    transform: translateY(-50%);
+}
+
 .search-icon{
     height: 1em;
     width: 1em;
@@ -176,8 +187,6 @@ input:active, input:focus{
     border-radius: 0 .25em .25em 0;
 }
 
-
-/* Add pseudo element for search icon */
 
 /*---- Start Exploring/Unavailable/Add something ----*/
 
