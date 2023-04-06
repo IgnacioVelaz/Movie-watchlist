@@ -21,7 +21,7 @@ search.addEventListener('keyup', e=>{
 
 
 //function that fetches search on click
-
+/*
 function handleSearch(){
     movies.innerHTML = "";
     let movieTitles = [];
@@ -60,6 +60,47 @@ function handleSearch(){
             })
         })
     })
+}
+*/
+async function handleSearch(){
+    movies.innerHTML = "";
+    let movieTitles = [];
+    let addedMovieTitles = [];
+    const res = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=113edb72&s=${search.value}`)
+    const data = await res.json()
+    if(data.Response !== 'False'){
+        data.Search.forEach(element=>{
+            movieTitles.push(element.Title)
+        });
+        }
+    else{
+        movies.innerHTML= `<div class="unavailable-container"><p class="unavailable">Unable to find what you're looking for. <br> Please try another search.</p></div>`
+    }
+
+    //loop through Titles array and fetch individual movie titles
+    async function fetchFullMovieData(movieTitles){
+        movieTitles.forEach(movieTitle => {
+            const res = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=113edb72&t=${movieTitle}`)
+            const data = await res.json()
+            .then(data=>{
+                console.log('Processing data')
+                const movieData = {
+                    Image: data.Poster,
+                    Title: data.Title,
+                    Rating: data.imdbRating,
+                    Genre: data.Genre,
+                    Plot: data.Plot,
+                    Runtime: data.Runtime
+                    }
+                if(!addedMovieTitles.includes(movieData.Title)){
+                    addedMovieTitles.push(movieData.Title)
+                    watchListArr.push(movieData);
+                    renderSearchResult(movieData);
+                }
+            })
+        })
+    }
+    
 }
 
 // Render searched movie results
