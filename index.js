@@ -10,7 +10,6 @@ if(savedMovies && savedMovies.length > 0){
      savedMoviesTitles = savedMovies.map(movie => movie.Title); 
 }
 
-// Add click event to search btn
 searchBtn.addEventListener('click', handleSearch);
 search.addEventListener('keyup', e=>{
     if(e.keyCode === 13 ){
@@ -19,9 +18,6 @@ search.addEventListener('keyup', e=>{
 });
 
 
-
-//function that fetches search on click
-/*
 function handleSearch(){
     movies.innerHTML = "";
     let movieTitles = [];
@@ -38,7 +34,6 @@ function handleSearch(){
             movies.innerHTML= `<div class="unavailable-container"><p class="unavailable">Unable to find what you're looking for. <br> Please try another search.</p></div>`
         }
 
-        //loop through Titles array and fetch individual movie titles
         movieTitles.forEach(movieTitle => {
             fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=113edb72&t=${movieTitle}`)
             .then(res => res.json())
@@ -61,49 +56,6 @@ function handleSearch(){
         })
     })
 }
-*/
-async function handleSearch(){
-    movies.innerHTML = "";
-    let movieTitles = [];
-    let addedMovieTitles = [];
-    const res = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=113edb72&s=${search.value}`)
-    const data = await res.json()
-    if(data.Response !== 'False'){
-        data.Search.forEach(element=>{
-            movieTitles.push(element.Title)
-        });
-        }
-    else{
-        movies.innerHTML= `<div class="unavailable-container"><p class="unavailable">Unable to find what you're looking for. <br> Please try another search.</p></div>`
-    }
-
-    //loop through Titles array and fetch individual movie titles
-    async function fetchFullMovieData(movieTitles){
-        movieTitles.forEach(movieTitle => {
-            const res = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=113edb72&t=${movieTitle}`)
-            const data = await res.json()
-            .then(data=>{
-                console.log('Processing data')
-                const movieData = {
-                    Image: data.Poster,
-                    Title: data.Title,
-                    Rating: data.imdbRating,
-                    Genre: data.Genre,
-                    Plot: data.Plot,
-                    Runtime: data.Runtime
-                    }
-                if(!addedMovieTitles.includes(movieData.Title)){
-                    addedMovieTitles.push(movieData.Title)
-                    watchListArr.push(movieData);
-                    renderSearchResult(movieData);
-                }
-            })
-        })
-    }
-    
-}
-
-// Render searched movie results
 
 function renderSearchResult(movieData){
 
@@ -140,27 +92,20 @@ function renderSearchResult(movieData){
 }
 
 let myMovies = []
-
-
-
    
 function addToWatchList(event) {
     console.log('adding to watchlist')
     const movieEl = event.target.closest('.movie');
     const title = movieEl.querySelector('.movie-title').textContent;
 
-    // Get existing movies from local storage or create an empty array
     let myMovies = JSON.parse(localStorage.getItem('movies')) || [];
     
-    // Find the movie to add from the watchListArr array
     const movieToAdd = watchListArr.find(movie => movie.Title === title);
 
-    // Add the movie to the localMovies array if it exists
     if (movieToAdd) {
         myMovies.push(movieToAdd)
     }
    
-    // Store the updated movies array in local storage
     localStorage.setItem('movies', JSON.stringify(myMovies))
     console.log('added to watchlist')
     
@@ -169,6 +114,5 @@ function addToWatchList(event) {
     icon.classList.remove('fa-circle-plus');
     icon.classList.add('fa-circle-check');
     addBtn.disabled = true;
-    
 }
 
